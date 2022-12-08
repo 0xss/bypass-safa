@@ -15,7 +15,7 @@ Kaspersky Lab 文件上传下载 无问题 命令执行被杀
 测试自写远控 所有操作均无问题
 
 
-# 代码参考 
+# 代码COPY
 
 https://blog.csdn.net/weixin_44747030/article/details/127894742
 
