@@ -1,4 +1,4 @@
-# bypass 360-Windows Defender-Kaspersky Lab 
+# bypass ~360~-Windows Defender-Kaspersky Lab 
 # 思路
 
 远程加载shellcode 到内存中执行
@@ -6,7 +6,7 @@
 shellcode base64编码 使用分段加载 绕过内存扫描 执行
 # 测试
 
-测试cs 4.7 无阶段载荷 360 全免 执行操作无问题
+~测试cs 4.7 无阶段载荷 360 全免 执行操作无问题~ 1229测试hook 函数被杀
 
 defender 命令执行，文件上传下载，进程查看无问题，截图被杀
 
